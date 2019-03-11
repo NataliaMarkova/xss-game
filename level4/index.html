@@ -7,9 +7,21 @@
   </head>
  
   <body id="level4">
+    <script>
+      function sanitizeTimer() {
+        const timerInput = document.getElementById('timer');
+        const timerValue = parseInt(timerInput.value) || 3;
+        timerInput.value = timerValue;
+      }
+    </script>
     <img src="https://xss-game.appspot.com/static/logos/level4.png" />
     <br>
-    <form action="" method="GET">
+    <div>
+      Solution: make timer handler to make an alert by entering in input field
+      <div>'); alert('1</div>
+    </div>
+
+    <form action="" method="GET" onsubmit="sanitizeTimer()">
       <input id="timer" name="timer" value="3">
       <input id="button" type="submit" value="Create timer"> </form>
     </form>
