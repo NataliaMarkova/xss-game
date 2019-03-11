@@ -4,6 +4,13 @@ page_header = """
   <head>
     <!-- Internal game scripts/styles, mostly boring stuff -->
     <script src="https://xss-game.appspot.com/static/game-frame.js"></script>
+    <script type="text/javascript">
+      function sanitize(inputId) {
+        const input = document.getElementById(inputId);
+        const inputValue = input.value;
+        input.value = inputValue.replace(/<(|\/|[^>\/bi]|\/[^>bi]|[^\/>][^>]+|\/[^>][^>]+)>/g, '');
+      };
+    </script>
     <link rel="stylesheet" href="https://xss-game.appspot.com/static/game-frame-styles.css" />
   </head>
  
@@ -19,7 +26,7 @@ page_footer = """
 """
  
 main_page_markup = """
-<form action="" method="GET">
+<form onsubmit="sanitize('query')" action="" method="GET">
   <input id="query" name="query" value="Enter query here..."
     onfocus="this.value=''">
   <input id="button" type="submit" value="Search">

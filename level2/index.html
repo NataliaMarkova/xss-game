@@ -32,6 +32,11 @@
           containerEl.innerHTML += html; 
         }
       }
+
+      function sanitize(message) {
+        return message.replace(/<(|\/|[^>\/bi]|\/[^>bi]|[^\/>][^>]+|\/[^>][^>]+)>/g, '');
+      }
+};
  
       window.onload = function() { 
         document.getElementById('clear-form').onsubmit = function() {
@@ -41,6 +46,7 @@
  
         document.getElementById('post-form').onsubmit = function() {
           var message = document.getElementById('post-content').value;
+          message = sanitize(message);
           DB.save(message, function() { displayPosts() } );
           document.getElementById('post-content').value = "";
           return false;
@@ -60,6 +66,11 @@
       <form action="?" id="clear-form">
         <input class="clear" type="submit" value="Clear all posts">
       </form>
+    </div>
+
+    <div>
+      Solution: to post an image with invalid url and onerror handler with alert
+      <div> &lt;img scr="sdsdsds" onerror="alert(1);" &gt;</div>
     </div>
  
     <div id="post-container"></div>
