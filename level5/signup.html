@@ -7,11 +7,22 @@
   </head>
  
   <body id="level5">
+    <script>
+      function sanitizeReference(ref) {
+        return ref.replace(/javascript:/g, '');
+      };
+
+      window.onload = function() {
+        const nextLink = document.getElementById('next');
+        const ref = nextLink.getAttribute('href');
+        nextLink.setAttribute('href', sanitizeReference(ref));
+      };
+    </script>
     <img src="https://xss-game.appspot.com/static/logos/level5.png" /><br><br>
     <!-- We're ignoring the email, but the poor user will never know! -->
     Enter email: <input id="reader-email" name="email" value="">
  
     <br><br>
-    <a href="{{ next }}">Next >></a>
+    <a id="next" href="{{ next }}">Next >></a>
   </body>
 </html>
