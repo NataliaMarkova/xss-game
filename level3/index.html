@@ -11,9 +11,13 @@
     </script>
  
     <script>
-      function chooseTab(num) {
+      function chooseTab(numStr) {
+        var num = parseInt(numStr);
+        if (num === NaN) {
+          num = 1;
+        }
         // Dynamically load the appropriate image.
-        var html = "Image " + parseInt(num) + "<br>";
+        var html = "Image " + num + "<br>";
         html += "<img src='https://xss-game.appspot.com/static/level3/cloud" + num + ".jpg' />";
         $('#tabContent').html(html);
  
@@ -49,7 +53,12 @@
   <body id="level3">
     <div id="header">
       <img id="logo" src="https://xss-game.appspot.com/static/logos/level3.png">
-      <span>Take a tour of our cloud data center.</a>
+      <span>Take a tour of our cloud data center.</span>
+    </div>
+
+    <div>
+      Solution: modify query parameter to display a broken image with onerror handler 
+      <div>#123' onerror='alert(1)' alt'</div>
     </div>
  
     <div class="tab" id="tab1" onclick="chooseTab('1')">Image 1</div>
